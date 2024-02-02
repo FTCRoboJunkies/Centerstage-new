@@ -9,11 +9,9 @@ import com.arcrobotics.ftclib.command.WaitUntilCommand;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 
 import org.firstinspires.ftc.teamcode.commands.drive.TrajectorySequenceFollowerCommand;
-import org.firstinspires.ftc.teamcode.commands.intake.IntakeOffCommand;
-import org.firstinspires.ftc.teamcode.commands.intake.IntakeOnCommand;
 import org.firstinspires.ftc.teamcode.commands.intake.RetractPurpleCommand;
 import org.firstinspires.ftc.teamcode.commands.vision.StopStreamingCommand;
-import org.firstinspires.ftc.teamcode.drive.BotBuildersMecanumDrive;
+import org.firstinspires.ftc.teamcode.drive.RoboMecanumDrive;
 import org.firstinspires.ftc.teamcode.subsystems.DriveSubsystem;
 import org.firstinspires.ftc.teamcode.subsystems.IntakeSubsystem;
 import org.firstinspires.ftc.teamcode.subsystems.RobotStateSubsystem;
@@ -24,7 +22,7 @@ import org.firstinspires.ftc.teamcode.vision.CenterStageVisionProcessor;
 @Autonomous(group = "drive")
 public class ScrimBlueAudience extends AutoOpBase {
 
-    private BotBuildersMecanumDrive robot;
+    private RoboMecanumDrive robot;
     private DriveSubsystem drive;
 
     private VisionSubsystem visionSubsystem;
@@ -44,7 +42,7 @@ public class ScrimBlueAudience extends AutoOpBase {
 
     @Override
     public void initialize() {
-        robot = new BotBuildersMecanumDrive(hardwareMap);
+        robot = new RoboMecanumDrive(hardwareMap);
         drive = new DriveSubsystem(
                 robot, null, telemetry);
 

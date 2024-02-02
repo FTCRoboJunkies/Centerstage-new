@@ -23,7 +23,7 @@ import org.firstinspires.ftc.teamcode.commands.intake.IntakeOnCommand;
 import org.firstinspires.ftc.teamcode.commands.intake.RetractPurpleCommand;
 import org.firstinspires.ftc.teamcode.commands.vertical.Pos1ExtendCommand;
 import org.firstinspires.ftc.teamcode.commands.vision.StopStreamingCommand;
-import org.firstinspires.ftc.teamcode.drive.BotBuildersMecanumDrive;
+import org.firstinspires.ftc.teamcode.drive.RoboMecanumDrive;
 import org.firstinspires.ftc.teamcode.drive.DriveConstants;
 import org.firstinspires.ftc.teamcode.subsystems.ArmSubsystem;
 import org.firstinspires.ftc.teamcode.subsystems.DriveSubsystem;
@@ -38,7 +38,7 @@ import org.firstinspires.ftc.teamcode.vision.CenterStageVisionProcessor;
 @Autonomous(group = "drive")
 public class BlueBackdropMiddleDouble extends AutoOpBase {
 
-    private BotBuildersMecanumDrive robot;
+    private RoboMecanumDrive robot;
     private DriveSubsystem drive;
 
     private VisionSubsystem visionSubsystem;
@@ -66,7 +66,7 @@ public class BlueBackdropMiddleDouble extends AutoOpBase {
 
     @Override
     public void initialize() {
-        robot = new BotBuildersMecanumDrive(hardwareMap);
+        robot = new RoboMecanumDrive(hardwareMap);
         drive = new DriveSubsystem(
                 robot, null, telemetry);
 
@@ -105,11 +105,11 @@ public class BlueBackdropMiddleDouble extends AutoOpBase {
 
                 .lineToSplineHeading(new Pose2d(-45, 11.5, Math.toRadians(175)))
                 .lineToSplineHeading(new Pose2d(-56,11.5, Math.toRadians(175)),
-                        BotBuildersMecanumDrive.getVelocityConstraint(15, DriveConstants.MAX_ANG_VEL, DriveConstants.TRACK_WIDTH),
-                        BotBuildersMecanumDrive.getAccelerationConstraint(DriveConstants.MAX_ACCEL))
+                        RoboMecanumDrive.getVelocityConstraint(15, DriveConstants.MAX_ANG_VEL, DriveConstants.TRACK_WIDTH),
+                        RoboMecanumDrive.getAccelerationConstraint(DriveConstants.MAX_ACCEL))
                 .lineToSplineHeading(new Pose2d(-48.25, 11.5, Math.toRadians(175)),
-                        BotBuildersMecanumDrive.getVelocityConstraint(10, DriveConstants.MAX_ANG_VEL, DriveConstants.TRACK_WIDTH),
-                        BotBuildersMecanumDrive.getAccelerationConstraint(DriveConstants.MAX_ACCEL))
+                        RoboMecanumDrive.getVelocityConstraint(10, DriveConstants.MAX_ANG_VEL, DriveConstants.TRACK_WIDTH),
+                        RoboMecanumDrive.getAccelerationConstraint(DriveConstants.MAX_ACCEL))
                 .build();
 
         //drive back towards the stack slowly, then move back again.
@@ -161,7 +161,7 @@ public class BlueBackdropMiddleDouble extends AutoOpBase {
         TrajectorySequence movePixelToRight = drive.trajectorySequenceBuilder(moveToLeft.end())
                 .lineToSplineHeading(new Pose2d(20,16, Math.toRadians(180)))
                 .lineToSplineHeading(new Pose2d(18,16, Math.toRadians(180)),
-                        BotBuildersMecanumDrive.getVelocityConstraint(15, DriveConstants.MAX_ANG_VEL, DriveConstants.TRACK_WIDTH), BotBuildersMecanumDrive.getAccelerationConstraint(DriveConstants.MAX_ACCEL))
+                        RoboMecanumDrive.getVelocityConstraint(15, DriveConstants.MAX_ANG_VEL, DriveConstants.TRACK_WIDTH), RoboMecanumDrive.getAccelerationConstraint(DriveConstants.MAX_ACCEL))
                 .build();
 
         TrajectorySequence moveToCenterRight = drive.trajectorySequenceBuilder(movePixelToRight.end())

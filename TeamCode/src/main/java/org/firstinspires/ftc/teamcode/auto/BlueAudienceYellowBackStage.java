@@ -14,7 +14,7 @@ import org.firstinspires.ftc.teamcode.commands.autogroup.ArmDownAuto;
 import org.firstinspires.ftc.teamcode.commands.drive.TrajectorySequenceFollowerCommand;
 import org.firstinspires.ftc.teamcode.commands.intake.RetractPurpleCommand;
 import org.firstinspires.ftc.teamcode.commands.vision.StopStreamingCommand;
-import org.firstinspires.ftc.teamcode.drive.BotBuildersMecanumDrive;
+import org.firstinspires.ftc.teamcode.drive.RoboMecanumDrive;
 import org.firstinspires.ftc.teamcode.subsystems.ArmSubsystem;
 import org.firstinspires.ftc.teamcode.subsystems.DriveSubsystem;
 import org.firstinspires.ftc.teamcode.subsystems.IntakeSubsystem;
@@ -27,7 +27,7 @@ import org.firstinspires.ftc.teamcode.vision.CenterStageVisionProcessor;
 @Autonomous(group = "drive")
 public class BlueAudienceYellowBackStage extends AutoOpBase {
 
-    private BotBuildersMecanumDrive robot;
+    private RoboMecanumDrive robot;
     private DriveSubsystem drive;
 
     private VisionSubsystem visionSubsystem;
@@ -50,7 +50,7 @@ public class BlueAudienceYellowBackStage extends AutoOpBase {
 
     @Override
     public void initialize() {
-        robot = new BotBuildersMecanumDrive(hardwareMap);
+        robot = new RoboMecanumDrive(hardwareMap);
         drive = new DriveSubsystem(
                 robot, null, telemetry);
 

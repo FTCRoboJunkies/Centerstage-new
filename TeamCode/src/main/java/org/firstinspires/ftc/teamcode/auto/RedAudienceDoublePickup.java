@@ -11,7 +11,6 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 
 import org.firstinspires.ftc.teamcode.commands.arm.DropPixelCommand;
 import org.firstinspires.ftc.teamcode.commands.arm.MiddleArmUpCommand;
-import org.firstinspires.ftc.teamcode.commands.arm.RotateTransferRightWhiteCommand;
 import org.firstinspires.ftc.teamcode.commands.autogroup.ArmDownAuto;
 import org.firstinspires.ftc.teamcode.commands.autogroup.ArmUpLeftAuto;
 import org.firstinspires.ftc.teamcode.commands.autogroup.AutoIntake;
@@ -23,7 +22,7 @@ import org.firstinspires.ftc.teamcode.commands.vertical.Pos0ExtendCommand;
 import org.firstinspires.ftc.teamcode.commands.vertical.Pos1ExtendCommand;
 import org.firstinspires.ftc.teamcode.commands.vertical.PosAutoExExtendCommand;
 import org.firstinspires.ftc.teamcode.commands.vision.StopStreamingCommand;
-import org.firstinspires.ftc.teamcode.drive.BotBuildersMecanumDrive;
+import org.firstinspires.ftc.teamcode.drive.RoboMecanumDrive;
 import org.firstinspires.ftc.teamcode.drive.DriveConstants;
 import org.firstinspires.ftc.teamcode.subsystems.ArmSubsystem;
 import org.firstinspires.ftc.teamcode.subsystems.DriveSubsystem;
@@ -37,7 +36,7 @@ import org.firstinspires.ftc.teamcode.vision.CenterStageVisionProcessor;
 @Autonomous(group = "drive")
 public class RedAudienceDoublePickup extends AutoOpBase {
 
-    private BotBuildersMecanumDrive robot;
+    private RoboMecanumDrive robot;
     private DriveSubsystem drive;
 
     private VisionSubsystem visionSubsystem;
@@ -61,7 +60,7 @@ public class RedAudienceDoublePickup extends AutoOpBase {
 
     @Override
     public void initialize() {
-        robot = new BotBuildersMecanumDrive(hardwareMap);
+        robot = new RoboMecanumDrive(hardwareMap);
         drive = new DriveSubsystem(
                 robot, null, telemetry);
 
@@ -91,11 +90,11 @@ public class RedAudienceDoublePickup extends AutoOpBase {
                 //move to in front of the stack
                 .lineToSplineHeading(new Pose2d(-42,-3, Math.toRadians(180)))
                 .lineToSplineHeading(new Pose2d(-48, -3, Math.toRadians(180)),
-                        BotBuildersMecanumDrive.getVelocityConstraint(10, DriveConstants.MAX_ANG_VEL, DriveConstants.TRACK_WIDTH),
-                        BotBuildersMecanumDrive.getAccelerationConstraint(DriveConstants.MAX_ACCEL))
+                        RoboMecanumDrive.getVelocityConstraint(10, DriveConstants.MAX_ANG_VEL, DriveConstants.TRACK_WIDTH),
+                        RoboMecanumDrive.getAccelerationConstraint(DriveConstants.MAX_ACCEL))
                 .lineToSplineHeading(new Pose2d(-41, -3, Math.toRadians(180)),
-                        BotBuildersMecanumDrive.getVelocityConstraint(10, DriveConstants.MAX_ANG_VEL, DriveConstants.TRACK_WIDTH),
-                        BotBuildersMecanumDrive.getAccelerationConstraint(DriveConstants.MAX_ACCEL))
+                        RoboMecanumDrive.getVelocityConstraint(10, DriveConstants.MAX_ANG_VEL, DriveConstants.TRACK_WIDTH),
+                        RoboMecanumDrive.getAccelerationConstraint(DriveConstants.MAX_ACCEL))
 
                 .build();
 
@@ -111,11 +110,11 @@ public class RedAudienceDoublePickup extends AutoOpBase {
                 //move to in front of the stack
                 .lineToSplineHeading(new Pose2d(-42,-1, Math.toRadians(180)))
                 .lineToSplineHeading(new Pose2d(-48, -1, Math.toRadians(180)),
-                        BotBuildersMecanumDrive.getVelocityConstraint(10, DriveConstants.MAX_ANG_VEL, DriveConstants.TRACK_WIDTH),
-                        BotBuildersMecanumDrive.getAccelerationConstraint(DriveConstants.MAX_ACCEL))
+                        RoboMecanumDrive.getVelocityConstraint(10, DriveConstants.MAX_ANG_VEL, DriveConstants.TRACK_WIDTH),
+                        RoboMecanumDrive.getAccelerationConstraint(DriveConstants.MAX_ACCEL))
                 .lineToSplineHeading(new Pose2d(-41, -1, Math.toRadians(180)),
-                        BotBuildersMecanumDrive.getVelocityConstraint(10, DriveConstants.MAX_ANG_VEL, DriveConstants.TRACK_WIDTH),
-                        BotBuildersMecanumDrive.getAccelerationConstraint(DriveConstants.MAX_ACCEL))
+                        RoboMecanumDrive.getVelocityConstraint(10, DriveConstants.MAX_ANG_VEL, DriveConstants.TRACK_WIDTH),
+                        RoboMecanumDrive.getAccelerationConstraint(DriveConstants.MAX_ACCEL))
 
                 .build();
 
@@ -135,11 +134,11 @@ public class RedAudienceDoublePickup extends AutoOpBase {
                 .lineToSplineHeading(new Pose2d(-42,-1, Math.toRadians(180)))
 
                 .lineToSplineHeading(new Pose2d(-48, -1, Math.toRadians(180)),
-                        BotBuildersMecanumDrive.getVelocityConstraint(10, DriveConstants.MAX_ANG_VEL, DriveConstants.TRACK_WIDTH),
-                        BotBuildersMecanumDrive.getAccelerationConstraint(DriveConstants.MAX_ACCEL))
+                        RoboMecanumDrive.getVelocityConstraint(10, DriveConstants.MAX_ANG_VEL, DriveConstants.TRACK_WIDTH),
+                        RoboMecanumDrive.getAccelerationConstraint(DriveConstants.MAX_ACCEL))
                 .lineToSplineHeading(new Pose2d(-41, -1, Math.toRadians(180)),
-                        BotBuildersMecanumDrive.getVelocityConstraint(10, DriveConstants.MAX_ANG_VEL, DriveConstants.TRACK_WIDTH),
-                        BotBuildersMecanumDrive.getAccelerationConstraint(DriveConstants.MAX_ACCEL))
+                        RoboMecanumDrive.getVelocityConstraint(10, DriveConstants.MAX_ANG_VEL, DriveConstants.TRACK_WIDTH),
+                        RoboMecanumDrive.getAccelerationConstraint(DriveConstants.MAX_ACCEL))
 
                 .build();
 

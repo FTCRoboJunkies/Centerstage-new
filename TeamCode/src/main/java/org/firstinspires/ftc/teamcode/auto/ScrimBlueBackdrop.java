@@ -10,20 +10,13 @@ import com.arcrobotics.ftclib.command.WaitUntilCommand;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 
 import org.firstinspires.ftc.teamcode.commands.arm.DropPixelCommand;
-import org.firstinspires.ftc.teamcode.commands.arm.LockTransferCommand;
-import org.firstinspires.ftc.teamcode.commands.arm.MiddleArmUpCommand;
-import org.firstinspires.ftc.teamcode.commands.arm.UnlockTransferCommand;
 import org.firstinspires.ftc.teamcode.commands.autogroup.ArmDownAuto;
 import org.firstinspires.ftc.teamcode.commands.autogroup.ArmUpAuto;
-import org.firstinspires.ftc.teamcode.commands.autogroup.ArmUpRightAuto;
 import org.firstinspires.ftc.teamcode.commands.drive.TrajectorySequenceFollowerCommand;
 import org.firstinspires.ftc.teamcode.commands.horizontal.ZeroOffHorizontalCommand;
-import org.firstinspires.ftc.teamcode.commands.intake.IntakeOffCommand;
-import org.firstinspires.ftc.teamcode.commands.intake.IntakeOnCommand;
 import org.firstinspires.ftc.teamcode.commands.intake.RetractPurpleCommand;
-import org.firstinspires.ftc.teamcode.commands.vertical.Pos1ExtendCommand;
 import org.firstinspires.ftc.teamcode.commands.vision.StopStreamingCommand;
-import org.firstinspires.ftc.teamcode.drive.BotBuildersMecanumDrive;
+import org.firstinspires.ftc.teamcode.drive.RoboMecanumDrive;
 import org.firstinspires.ftc.teamcode.drive.DriveConstants;
 import org.firstinspires.ftc.teamcode.subsystems.ArmSubsystem;
 import org.firstinspires.ftc.teamcode.subsystems.DriveSubsystem;
@@ -38,7 +31,7 @@ import org.firstinspires.ftc.teamcode.vision.CenterStageVisionProcessor;
 @Autonomous(group = "drive")
 public class ScrimBlueBackdrop extends AutoOpBase {
 
-    private BotBuildersMecanumDrive robot;
+    private RoboMecanumDrive robot;
     private DriveSubsystem drive;
 
     private VisionSubsystem visionSubsystem;
@@ -66,7 +59,7 @@ public class ScrimBlueBackdrop extends AutoOpBase {
 
     @Override
     public void initialize() {
-        robot = new BotBuildersMecanumDrive(hardwareMap);
+        robot = new RoboMecanumDrive(hardwareMap);
         drive = new DriveSubsystem(
                 robot, null, telemetry);
 
@@ -122,7 +115,7 @@ public class ScrimBlueBackdrop extends AutoOpBase {
         TrajectorySequence movePixelToRight = drive.trajectorySequenceBuilder(moveToLeft.end())
                 .lineToSplineHeading(new Pose2d(20,16, Math.toRadians(180)))
                 .lineToSplineHeading(new Pose2d(18,16, Math.toRadians(180)),
-                        BotBuildersMecanumDrive.getVelocityConstraint(15, DriveConstants.MAX_ANG_VEL, DriveConstants.TRACK_WIDTH), BotBuildersMecanumDrive.getAccelerationConstraint(DriveConstants.MAX_ACCEL))
+                        RoboMecanumDrive.getVelocityConstraint(15, DriveConstants.MAX_ANG_VEL, DriveConstants.TRACK_WIDTH), RoboMecanumDrive.getAccelerationConstraint(DriveConstants.MAX_ACCEL))
                 .build();
 
         TrajectorySequence moveToCenterRight = drive.trajectorySequenceBuilder(movePixelToRight.end())

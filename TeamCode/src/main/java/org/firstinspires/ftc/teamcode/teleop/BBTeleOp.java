@@ -12,23 +12,18 @@ package org.firstinspires.ftc.teamcode.teleop;
 
         import com.arcrobotics.ftclib.command.ConditionalCommand;
         import com.arcrobotics.ftclib.command.InstantCommand;
-        import com.arcrobotics.ftclib.command.ParallelCommandGroup;
         import com.arcrobotics.ftclib.command.SequentialCommandGroup;
         import com.arcrobotics.ftclib.command.WaitCommand;
         import com.arcrobotics.ftclib.command.button.Trigger;
         import com.arcrobotics.ftclib.gamepad.GamepadEx;
         import com.arcrobotics.ftclib.gamepad.GamepadKeys;
         import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
-        import com.qualcomm.robotcore.hardware.DcMotor;
 
-        import org.apache.commons.math3.analysis.function.Sin;
         import org.firstinspires.ftc.teamcode.commands.arm.ArmExtendoInCommand;
         import org.firstinspires.ftc.teamcode.commands.arm.ArmExtendoOutCommand;
         import org.firstinspires.ftc.teamcode.commands.arm.ArmLeftCommand;
         import org.firstinspires.ftc.teamcode.commands.arm.ArmRightCommand;
-        import org.firstinspires.ftc.teamcode.commands.arm.DropPixelCommand;
         import org.firstinspires.ftc.teamcode.commands.arm.LockTransferCommand;
-        import org.firstinspires.ftc.teamcode.commands.arm.MiddleArmCenterCommand;
         import org.firstinspires.ftc.teamcode.commands.arm.MiddleArmDownCommand;
         import org.firstinspires.ftc.teamcode.commands.arm.MiddleArmDownSlow1Command;
         import org.firstinspires.ftc.teamcode.commands.arm.MiddleArmUpCommand;
@@ -40,13 +35,11 @@ package org.firstinspires.ftc.teamcode.teleop;
         import org.firstinspires.ftc.teamcode.commands.arm.SinglePixelDropCommand;
         import org.firstinspires.ftc.teamcode.commands.arm.UnlockTransferCommand;
         import org.firstinspires.ftc.teamcode.commands.drive.DriveCommand;
-        import org.firstinspires.ftc.teamcode.commands.horizontal.ExtendHorizontalCommand;
         import org.firstinspires.ftc.teamcode.commands.horizontal.IncExtendHorizontalCommand;
         import org.firstinspires.ftc.teamcode.commands.horizontal.IncOffHorizontalCommand;
         import org.firstinspires.ftc.teamcode.commands.horizontal.RetractHorizontalCommand;
         import org.firstinspires.ftc.teamcode.commands.horizontal.ZeroOffHorizontalCommand;
         import org.firstinspires.ftc.teamcode.commands.intake.ExtendPurpleCommand;
-        import org.firstinspires.ftc.teamcode.commands.intake.IntakeAdvanceCommand;
         import org.firstinspires.ftc.teamcode.commands.intake.IntakeOffCommand;
         import org.firstinspires.ftc.teamcode.commands.intake.IntakeOnCommand;
         import org.firstinspires.ftc.teamcode.commands.intake.IntakeReverseCommand;
@@ -54,17 +47,12 @@ package org.firstinspires.ftc.teamcode.teleop;
         import org.firstinspires.ftc.teamcode.commands.launch.LaunchPlaneCommand;
         import org.firstinspires.ftc.teamcode.commands.launch.LeftArmDeployCommand;
         import org.firstinspires.ftc.teamcode.commands.launch.RightArmDeployCommand;
-        import org.firstinspires.ftc.teamcode.commands.vertical.ExtendVerticalCommand;
-        import org.firstinspires.ftc.teamcode.commands.vertical.Pos1ExtendCommand;
-        import org.firstinspires.ftc.teamcode.commands.vertical.Pos2ExtendCommand;
         import org.firstinspires.ftc.teamcode.commands.vertical.RetractVerticalCommand;
         import org.firstinspires.ftc.teamcode.commands.vertical.StagedVerticalCommand;
-        import org.firstinspires.ftc.teamcode.commands.winch.DeployLeftHookCommand;
-        import org.firstinspires.ftc.teamcode.commands.winch.DeployRightHookCommand;
         import org.firstinspires.ftc.teamcode.commands.winch.WinchOffCommand;
         import org.firstinspires.ftc.teamcode.commands.winch.WinchOnCommand;
         import org.firstinspires.ftc.teamcode.commands.winch.WinchReverseCommand;
-        import org.firstinspires.ftc.teamcode.drive.BotBuildersMecanumDrive;
+        import org.firstinspires.ftc.teamcode.drive.RoboMecanumDrive;
         import org.firstinspires.ftc.teamcode.subsystems.ArmSubsystem;
         import org.firstinspires.ftc.teamcode.subsystems.DriveSubsystem;
         import org.firstinspires.ftc.teamcode.subsystems.HorizontalSlideSubsystem;
@@ -99,7 +87,7 @@ public class BBTeleOp extends CommandOpMode {
 
     private GamepadEx gp1;
     private GamepadEx gp2;
-    private BotBuildersMecanumDrive mecDrive;
+    private RoboMecanumDrive mecDrive;
 
 
 
@@ -110,7 +98,7 @@ public class BBTeleOp extends CommandOpMode {
         telemetry = new MultipleTelemetry(telemetry, FtcDashboard.getInstance().getTelemetry());
 
         //use the BB mecanum drive
-        mecDrive = new BotBuildersMecanumDrive(hardwareMap);
+        mecDrive = new RoboMecanumDrive(hardwareMap);
 
         //we need to keep the robot state
         stateSubsystem = new RobotStateSubsystem();

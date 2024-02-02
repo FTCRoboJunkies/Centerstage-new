@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.auto;
+package org.firstinspires.ftc.teamcode.auto.Blue;
 
 import com.acmerobotics.roadrunner.geometry.Pose2d;
 import com.arcrobotics.ftclib.command.CommandScheduler;
@@ -9,6 +9,7 @@ import com.arcrobotics.ftclib.command.WaitCommand;
 import com.arcrobotics.ftclib.command.WaitUntilCommand;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 
+import org.firstinspires.ftc.teamcode.auto.AutoOpBase;
 import org.firstinspires.ftc.teamcode.commands.arm.DropPixelCommand;
 import org.firstinspires.ftc.teamcode.commands.autogroup.ArmDownAuto;
 import org.firstinspires.ftc.teamcode.commands.autogroup.ArmUpAuto;
@@ -16,7 +17,7 @@ import org.firstinspires.ftc.teamcode.commands.drive.TrajectorySequenceFollowerC
 import org.firstinspires.ftc.teamcode.commands.horizontal.ZeroOffHorizontalCommand;
 import org.firstinspires.ftc.teamcode.commands.intake.RetractPurpleCommand;
 import org.firstinspires.ftc.teamcode.commands.vision.StopStreamingCommand;
-import org.firstinspires.ftc.teamcode.drive.BotBuildersMecanumDrive;
+import org.firstinspires.ftc.teamcode.drive.RoboMecanumDrive;
 import org.firstinspires.ftc.teamcode.drive.DriveConstants;
 import org.firstinspires.ftc.teamcode.subsystems.ArmSubsystem;
 import org.firstinspires.ftc.teamcode.subsystems.DriveSubsystem;
@@ -31,19 +32,19 @@ import org.firstinspires.ftc.teamcode.vision.CenterStageVisionProcessor;
 @Autonomous(group = "drive")
 public class BlueBackdropYellowPark extends AutoOpBase {
 
-    private BotBuildersMecanumDrive robot;
+    private RoboMecanumDrive robot;
     private DriveSubsystem drive;
 
     private VisionSubsystem visionSubsystem;
 
     private RobotStateSubsystem state;
 
-    private IntakeSubsystem intakeSubsystem;
-    private ArmSubsystem armSubsystem;
+   // private IntakeSubsystem intakeSubsystem;
+   // private ArmSubsystem armSubsystem;
 
-    private HorizontalSlideSubsystem horizontalSlideSubsystem;
+  //  private HorizontalSlideSubsystem horizontalSlideSubsystem;
 
-    private VerticalSlideSubsystem verticalSubsystem;
+   // private VerticalSlideSubsystem verticalSubsystem;
 
 
     private TrajectorySequenceFollowerCommand forwardFollower;
@@ -59,17 +60,17 @@ public class BlueBackdropYellowPark extends AutoOpBase {
 
     @Override
     public void initialize() {
-        robot = new BotBuildersMecanumDrive(hardwareMap);
+        robot = new RoboMecanumDrive(hardwareMap);
         drive = new DriveSubsystem(
                 robot, null, telemetry);
 
         state = new RobotStateSubsystem();
 
-        intakeSubsystem = new IntakeSubsystem(hardwareMap, state);
+       // intakeSubsystem = new IntakeSubsystem(hardwareMap, state);
         visionSubsystem = new VisionSubsystem(hardwareMap, telemetry);
-        armSubsystem = new ArmSubsystem(hardwareMap, state);
-        verticalSubsystem = new VerticalSlideSubsystem(hardwareMap, state);
-        horizontalSlideSubsystem = new HorizontalSlideSubsystem(hardwareMap, state, intakeSubsystem);
+       // armSubsystem = new ArmSubsystem(hardwareMap, state);
+        //verticalSubsystem = new VerticalSlideSubsystem(hardwareMap, state);
+      //  horizontalSlideSubsystem = new HorizontalSlideSubsystem(hardwareMap, state, intakeSubsystem);
 
         //Set the starting position of the robot
         Pose2d startingPosition = new Pose2d(15, 62, Math.toRadians(270));
@@ -117,7 +118,7 @@ public class BlueBackdropYellowPark extends AutoOpBase {
         TrajectorySequence movePixelToRight = drive.trajectorySequenceBuilder(moveToLeft.end())
                 .lineToSplineHeading(new Pose2d(20,16, Math.toRadians(180)))
                 .lineToSplineHeading(new Pose2d(18,16, Math.toRadians(180)),
-                        BotBuildersMecanumDrive.getVelocityConstraint(15, DriveConstants.MAX_ANG_VEL, DriveConstants.TRACK_WIDTH), BotBuildersMecanumDrive.getAccelerationConstraint(DriveConstants.MAX_ACCEL))
+                        RoboMecanumDrive.getVelocityConstraint(15, DriveConstants.MAX_ANG_VEL, DriveConstants.TRACK_WIDTH), RoboMecanumDrive.getAccelerationConstraint(DriveConstants.MAX_ACCEL))
                 .build();
 
         TrajectorySequence moveToCenterRight = drive.trajectorySequenceBuilder(movePixelToRight.end())
@@ -145,7 +146,7 @@ public class BlueBackdropYellowPark extends AutoOpBase {
         //load the pixel pusher
 
 
-        intakeSubsystem.ExtendPurple();
+        //intakeSubsystem.ExtendPurple();
 
         //wait for the op mode to start, then execute our paths.
 
@@ -157,18 +158,18 @@ public class BlueBackdropYellowPark extends AutoOpBase {
                                         new ParallelCommandGroup(
                                                 leftFollower,
                                                 new SequentialCommandGroup(
-                                                        new WaitCommand(500),
-                                                        new ArmUpAuto(armSubsystem, verticalSubsystem, state)
+                                                        //new WaitCommand(500),
+                                                       // new ArmUpAuto(armSubsystem, verticalSubsystem, state)
                                                 )
                                         ),
                                          new WaitCommand(500),
                                         new WaitCommand(300),
-                                        new DropPixelCommand(armSubsystem),
-                                        new WaitCommand(250),
-                                        new ArmDownAuto(armSubsystem, verticalSubsystem, state),
+                                        //new DropPixelCommand(armSubsystem),
+                                        //new WaitCommand(250),
+                                        //new ArmDownAuto(armSubsystem, verticalSubsystem, state),
                                         new WaitCommand(500),
-                                        movePixelToLeftFollower,
-                                        new RetractPurpleCommand(intakeSubsystem),
+                                       // movePixelToLeftFollower,
+                                       // new RetractPurpleCommand(intakeSubsystem),
                                         moveLeftToMovePosition
 
                                         ),
@@ -177,18 +178,18 @@ public class BlueBackdropYellowPark extends AutoOpBase {
                                                 new ParallelCommandGroup(
                                                         rightFollower,
                                                         new SequentialCommandGroup(
-                                                                new WaitCommand(500),
-                                                                new ArmUpAuto(armSubsystem, verticalSubsystem, state)
+                                                                //new WaitCommand(500),
+                                                                //new ArmUpAuto(armSubsystem, verticalSubsystem, state)
                                                         )
                                                 ),
                                                 new WaitCommand(500),
                                                 new WaitCommand(300),
-                                                new DropPixelCommand(armSubsystem),
+                                                //new DropPixelCommand(armSubsystem),
                                                 new WaitCommand(250),
-                                                new ArmDownAuto(armSubsystem, verticalSubsystem, state),
+                                                //new ArmDownAuto(armSubsystem, verticalSubsystem, state),
                                                 new WaitCommand(500),
-                                                movePixelToRightFollower,
-                                                new RetractPurpleCommand(intakeSubsystem),
+                                                //movePixelToRightFollower,
+                                                //new RetractPurpleCommand(intakeSubsystem),
                                                 moveToCenterRightFollower
 
                                         ),
@@ -196,20 +197,20 @@ public class BlueBackdropYellowPark extends AutoOpBase {
                                                 new ParallelCommandGroup(
                                                     forwardFollower,
                                                     new SequentialCommandGroup(
-                                                            new WaitCommand(500),
+                                                            //new WaitCommand(500),
 
-                                                        new ArmUpAuto(armSubsystem, verticalSubsystem, state)
+                                                        //new ArmUpAuto(armSubsystem, verticalSubsystem, state)
                                                     )
                                                 ),
                                                 new WaitCommand(500),
 
-                                                new DropPixelCommand(armSubsystem),
+                                                //new DropPixelCommand(armSubsystem),
                                                 new WaitCommand(250),
-                                                new ArmDownAuto(armSubsystem, verticalSubsystem, state),
+                                                //new ArmDownAuto(armSubsystem, verticalSubsystem, state),
                                                 new WaitCommand(500),
                                                 movePixelToCenterFollower,
-                                                new RetractPurpleCommand(intakeSubsystem),
-                                                new ZeroOffHorizontalCommand(horizontalSlideSubsystem),
+                                                //new RetractPurpleCommand(intakeSubsystem),
+                                                //new ZeroOffHorizontalCommand(horizontalSlideSubsystem),
                                                 moveToCenterFollower
 
                                         ),

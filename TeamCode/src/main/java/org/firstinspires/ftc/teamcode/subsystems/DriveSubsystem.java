@@ -7,10 +7,9 @@ import com.acmerobotics.roadrunner.trajectory.Trajectory;
 import com.acmerobotics.roadrunner.trajectory.TrajectoryBuilder;
 import com.arcrobotics.ftclib.command.SubsystemBase;
 import com.arcrobotics.ftclib.gamepad.GamepadEx;
-import com.arcrobotics.ftclib.gamepad.GamepadKeys;
 
 import org.firstinspires.ftc.robotcore.external.Telemetry;
-import org.firstinspires.ftc.teamcode.drive.BotBuildersMecanumDrive;
+import org.firstinspires.ftc.teamcode.drive.RoboMecanumDrive;
 import org.firstinspires.ftc.teamcode.trajectorysequence.TrajectorySequence;
 import org.firstinspires.ftc.teamcode.trajectorysequence.TrajectorySequenceBuilder;
 
@@ -19,11 +18,11 @@ import java.util.function.DoubleSupplier;
 
 public class DriveSubsystem extends SubsystemBase {
 
-    BotBuildersMecanumDrive driveBase;
+    RoboMecanumDrive driveBase;
     GamepadEx gp1;
     Telemetry telemetry;
 
-    public DriveSubsystem(BotBuildersMecanumDrive drive, GamepadEx gamepad, Telemetry tele) {
+    public DriveSubsystem(RoboMecanumDrive drive, GamepadEx gamepad, Telemetry tele) {
 
         gp1 = gamepad;
         driveBase = drive;
