@@ -28,7 +28,7 @@ import org.firstinspires.ftc.teamcode.subsystems.VisionSubsystem;
 import org.firstinspires.ftc.teamcode.trajectorysequence.TrajectorySequence;
 import org.firstinspires.ftc.teamcode.vision.CenterStageVisionProcessor;
 
-@Autonomous(group = "drive")
+@Autonomous(name = "RedBackdropPark", group = "🔴red")
 public class RedBackdropYellowPark extends AutoOpBase {
 
     private RoboMecanumDrive robot;
